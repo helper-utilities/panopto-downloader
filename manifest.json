@@ -1,0 +1,21 @@
+{
+	"manifest_version": 2,
+	"version": "1.0",
+	"name": "Panopto Video Downloader",
+	"description": "This is a simple extension to easily download panopto lectures.",
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"content_scripts": [{
+		"matches": ["https://*.panopto.com/Panopto/Pages/Viewer.aspx*"],
+		"js": ["link.js"]
+	}],
+	"browser_action": {
+		"default_icon": "icon.png"
+	},
+	"icons": {
+		"1920": "icon.png"
+	},
+	"permissions": ["activeTab", "downloads", "https://*.panopto.com/Panopto/Pages/Viewer.aspx*", "tabs"]
+}
