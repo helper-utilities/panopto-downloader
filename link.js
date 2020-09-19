@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
 	if (req.clicked) {
 		if (video_url && deliveryTitle)
 			sendResponse({
-				saveAs: deliveryTitle,
+				saveAs: `${deliveryTitle}.mp4`,
 				url: video_url
 			})
 	}

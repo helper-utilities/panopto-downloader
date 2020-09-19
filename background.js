@@ -9,7 +9,7 @@ function runDownloadScript() {
 				chrome.downloads.download({
 					url: res.url,
 					filename: res.saveAs,
-					saveAs: false
+					saveAs: true
 				});
 			})
 		});
