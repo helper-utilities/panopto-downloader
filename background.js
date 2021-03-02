@@ -1,4 +1,14 @@
-let download = false;
+function fileName(string) {
+	const invalid = ["/", "?", "<", ">", "\\", ":", "*", "|", "\""];
+	let valid = "";
+	for (let i = 0; i < string.length; i++) {
+		if (invalid.includes(string[i]))
+			valid += "_";
+		else
+			valid += string[i];
+	}
+	return valid;
+}
 
 function runDownloadScript() {
 	chrome.browserAction.onClicked.addListener((tab) => {
@@ -8,7 +18,7 @@ function runDownloadScript() {
 			chrome.tabs.sendMessage(tabs[0].id, { clicked: true }, (res) => {
 				chrome.downloads.download({
 					url: res.url,
-					filename: res.saveAs,
+					filename: fileName(res.saveAs),
 					saveAs: true
 				});
 			})
